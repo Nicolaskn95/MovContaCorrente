@@ -206,4 +206,6 @@ public class Cliente {
         
         return (primeiroDigito == digito1Calculado && segundoDigito == digito2Calculado);
     }
+    
+    
 }
