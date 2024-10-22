@@ -274,6 +274,7 @@ public class GuiAgencia extends javax.swing.JFrame {
         txtCnpj.setText("");
         txtNomeGerente.setText("");
         cbxUf.setSelectedIndex(1);
+        
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
