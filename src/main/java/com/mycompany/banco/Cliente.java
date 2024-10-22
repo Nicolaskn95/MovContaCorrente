@@ -174,7 +174,12 @@ public class Cliente {
     }
 
     public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+       if(validaCNPJ(cnpj) == true){
+            JOptionPane.showMessageDialog(null, "CNPJ Válido");
+            this.cnpj = cnpj;
+       } else {
+            JOptionPane.showMessageDialog(null, "CNPJ Inválido");
+       }   
     }
 
     public boolean getSexo() {
@@ -199,13 +204,44 @@ public class Cliente {
         }
         int resto_1 = soma_1 % 11;        
         int resto_2 = soma_2 % 11;
-//    - Se o resto da divisão for menor que 2, então o dígito é igual a 0 (Zero).
-//    - Se o resto da divisão for maior ou igual a 2, então o dígito verificador é igual a 11 menos o resto da divisão (11 - resto).
+
         int digito1Calculado = (resto_1 < 2) ? 0 : 11 - resto_1;
         int digito2Calculado = (resto_2 < 2) ? 0 : 11 - resto_2;
         
         return (primeiroDigito == digito1Calculado && segundoDigito == digito2Calculado);
     }
     
+    public boolean validaCNPJ(String cnpj) {
+    String arrayCnpj = cnpj.replaceAll("[^\\d]", "");
     
+    if (arrayCnpj.length() != 14) {
+        return false;
+    }
+    
+    int primeiroDigito = Integer.parseInt(String.valueOf(arrayCnpj.charAt(12)));
+    int segundoDigito = Integer.parseInt(String.valueOf(arrayCnpj.charAt(13)));
+    
+    int[] pesos1 = {5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
+    
+    int[] pesos2 = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
+    
+    int soma_1 = 0;
+    int soma_2 = 0;
+    
+    for (int i = 0; i < 12; i++) {
+        soma_1 += Integer.parseInt(String.valueOf(arrayCnpj.charAt(i))) * pesos1[i];
+    }
+    
+    for (int i = 0; i < 13; i++) {
+        soma_2 += Integer.parseInt(String.valueOf(arrayCnpj.charAt(i))) * pesos2[i];
+    }
+    
+    int resto_1 = soma_1 % 11;
+    int resto_2 = soma_2 % 11;
+    
+    int digito1Calculado = (resto_1 < 2) ? 0 : 11 - resto_1;
+    int digito2Calculado = (resto_2 < 2) ? 0 : 11 - resto_2;
+        
+    return (primeiroDigito == digito1Calculado && segundoDigito == digito2Calculado);
+    }
 }
