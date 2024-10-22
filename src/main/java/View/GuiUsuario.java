@@ -32,6 +32,7 @@ public class GuiUsuario extends javax.swing.JFrame {
         txtSenha = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Usuário");
 
         jLabel1.setText("Login");
 
