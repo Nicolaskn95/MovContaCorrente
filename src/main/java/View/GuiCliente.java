@@ -352,6 +352,7 @@ public class GuiCliente extends javax.swing.JFrame {
         cliente = new Cliente();
         
         cliente.setCpf(txtCpf.getText());
+        cliente.setCnpj(txtCnpj.getText());
         cliente.setNome(txtName.getText());
         cliente.setEmail(txtEmail.getText());
         cliente.setFone(txtFone.getText());
@@ -386,12 +387,15 @@ public class GuiCliente extends javax.swing.JFrame {
         txtComplemento.setText("");
         txtCidade.setText("");
         txtNumero.setText("");
+        txtCnpj.setText("");
         cbxUf.setSelectedIndex(0);
+        
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
 
         txtCpf.setText(cliente.getCpf());
+        txtCnpj.setText(cliente.getCnpj());
         txtName.setText(cliente.getNome());
         txtEmail.setText(cliente.getEmail());
         txtFone.setText(cliente.getFone());
